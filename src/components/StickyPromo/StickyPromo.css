@@ -1,0 +1,153 @@
+.sticky-promo {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+/** AMAZON **/
+
+.sticky-amazon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 75px;
+  padding: 8px;
+  color: var(--white);
+  text-decoration: none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 59, 93, 0.97),
+      rgba(2, 136, 209, 0.94)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-amazon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  animation: sticky-shine 3.5s infinite;
+}
+
+@keyframes sticky-shine {
+  0% {
+    left: -100%;
+  }
+
+  45%,
+  100% {
+    left: 150%;
+  }
+}
+
+.sticky-amazon:hover {
+  transform: translateY(-2.5px);
+
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(41, 182, 246, 0.25);
+}
+
+/* IMAGE */
+
+.sticky-amazon-image {
+  width: 40px;
+  height: 55px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sticky-amazon-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* CONTENT */
+
+.sticky-amazon-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  line-height: 1.1;
+}
+
+.sticky-amazon-info {
+    justify-content: center;
+    align-items: center;
+}
+
+.sticky-small-text {
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.sticky-amazon-content strong {
+  margin: 3px;
+  font-size: 1.05rem;
+}
+
+/* BUY BUTTON */
+
+.buy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 4px 10px;
+  color: var(--text);
+  background: var(--white);
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  animation: buy-pulse 1.5s infinite;
+}
+
+.buy-button span {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.sticky-amazon:hover .buy-button span {
+  transform: translateX(3px);
+}
+
+@keyframes buy-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}

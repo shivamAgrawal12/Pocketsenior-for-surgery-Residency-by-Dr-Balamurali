@@ -1,0 +1,371 @@
+.longcases-section {
+  position: relative;
+  width: min(1350px, calc(100% - 5rem));
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 4vw, 2rem) 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/** HEADER **/
+
+.longcases-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.45rem;
+}
+
+.longcases-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+}
+
+/** SUBTITLE **/
+
+.longcases-subtitle {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto 1rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  color: var(--text);
+  font-family: var(--text-family);
+  font-size: clamp( 0.9rem, 1.5vw, 1.1rem);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/** CAROUSEL **/
+
+.longcases-carousel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/** SWIPER **/
+
+.longcases-carousel .swiper {
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem 0.25rem 2.5rem;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.longcases-carousel .swiper-wrapper {
+  align-items: stretch;
+}
+
+/** SLIDE **/
+
+.longcases-carousel .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/** MAIN CARD **/
+
+.longcase-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  background: rgba(41, 182, 246, 0.1);
+  border: 1px solid var(--primary-dark);
+  border-radius: 1.8rem;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28), 0 5px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/** CARD TOP SHINE **/
+
+.longcase-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  width: 84%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/** CARD HOVER **/
+
+@media (hover: hover) {
+
+  .longcase-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--text);
+  }
+}
+
+/** TITLE AREA **/
+
+.longcase-title-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 125px !important;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/** TITLE **/
+
+.longcase-title {
+  width: 100%;
+  max-width: 96%;
+  margin: 0;
+  color: var(--text);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem !important;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+/** IMAGE WRAPPER **/
+
+.longcase-image-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0 1px var(--text-light), 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+/** IMAGE **/
+
+.longcase-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+/** IMAGE HOVER **/
+
+@media (hover: hover) {
+  .longcase-card:hover
+  .longcase-image {
+    transform: scale(1.035);
+  }
+}
+
+/** OLD OVERLAY **/
+
+.longcase-overlay {
+  display: none;
+}
+
+/**  CARD CONTENT **/
+
+.longcase-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem 1rem;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/** KNOW MORE LINK **/
+
+.longcase-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: var(--primary-dark);
+  font-family: var(--text-family);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+/** PAGINATION **/
+
+.longcases-carousel
+.swiper-pagination-bullet {
+  display: none;
+}
+
+/** TABLET - 600px - 800px **/
+
+@media (min-width: 600px)
+and (max-width: 800px) {
+
+  .longcases-section {
+    width: calc(100% - 1.5rem);
+  }
+
+  .longcase-title-wrapper {
+    height: 100px !important;
+    padding: 0.8rem;
+  }
+
+  .longcase-title {
+    font-size: 1.6rem !important;
+  }
+
+  .longcase-link {
+    font-size: 0.9rem;
+  }
+
+}
+
+/** MOBILE - 0 - 599px **/
+
+@media (max-width: 599px) {
+
+  .longcases-section {
+    width: calc(100% - 3rem);
+    padding: 0 0.75rem;
+  }
+
+  .longcases-header h2 {
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+  }
+
+  .longcases-header span {
+    font-size: 1.25rem;
+  }
+
+  .longcases-carousel {
+    padding: 0.25rem 0 1.5rem;
+  }
+
+  .longcase-title-wrapper {
+    height: 90px !important;
+  }
+
+  .longcase-title {
+    font-size: 1.5rem !important;
+    line-height: 1.35;
+  }
+
+}
+
+/** SMALL MOBILE - <= 400px **/
+
+@media (max-width: 400px) {
+
+  .longcases-section {
+    width: calc(100% - 1rem);
+  }
+
+  .longcases-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .longcases-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .longcase-title-wrapper {
+    height: 75px !important;
+  }
+
+  .longcase-title {
+    font-size: 1.1rem !important;
+  }
+
+  .longcase-link {
+    font-size: 0.85rem;
+  }
+
+}
+
+/** VERY SMALL DEVICES - 340px **/
+
+@media (max-width: 340px) {
+
+  .longcases-section {
+    padding: 0 0.5rem;
+  }
+
+  .longcase-title-wrapper {
+    height: 60px !important;
+  }
+
+  .longcase-title {
+    font-size: 0.95rem !important;
+  }
+
+  .longcase-link {
+    font-size: 0.7rem;
+  }
+}
+
+/** LANDSCAPE MOBILE
+===================================================== */
+
+@media (max-width: 900px)
+and (orientation: landscape) {
+
+  .longcase-title-wrapper {
+    min-height: 80px !important;
+  }
+
+  .longcase-title {
+    font-size: 1.25rem !important;
+  }
+
+  .longcase-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.longcase-card:focus-visible {
+
+  outline: 3px solid rgba(79, 195, 247, 0.9);
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+
+  .longcase-card:active {
+    transform: scale(0.985);
+  }
+}

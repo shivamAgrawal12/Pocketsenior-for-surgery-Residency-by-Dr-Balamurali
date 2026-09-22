@@ -1,43 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home"; 
-import About from "./components/About";
-import Chapter from "./components/Chapter";
-import Longcasechapter from "./components/Longcasechapter";
-import Shortcaseschapter from "./components/Shortcaseschapter";
-import Footer from "./components/Footer";
+
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer/Footer";
+import About from "./components/About/About";
+import Home from "./components/Home";
+import Casechapter from "./components/CaseChapter/CaseChapter";
+import Longcasechapter from "./components/CaseChapter/LongcaseChapter";
+import Shortcasechapter from "./components/CaseChapter/ShortcaseChapter";
+import StickyPromo from "./components/StickyPromo/StickyPromo";
 
 function App() {
-  useEffect(() => {
-    const handleCopy = async (event) => {
-      event.preventDefault();
-      const heartIcon = "Lots of ❤️";
-      try {
-        await navigator.clipboard.writeText(heartIcon);
-      } catch (err) {
-        console.error('Failed to copy text: ', err);
-      }
-    };
-
-    document.addEventListener("copy", handleCopy);
-    
-    return () => {
-      document.removeEventListener("copy", handleCopy);
-    };
-  }, []);
-
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/chapter/:id" element={<Chapter />} />
+        <Route path= "/about" element={<About/>} />
+        <Route path="/chapter/:id" element={<Casechapter />} />
         <Route path="/Longcasechapter/:id" element={<Longcasechapter />} />
-        <Route path="/Shortcaseschapter/:id" element={<Shortcaseschapter />} />
+        <Route path="/Shortcaseschapter/:id" element={<Shortcasechapter />} />
+        <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <StickyPromo/>
     </Router>
   );
 }

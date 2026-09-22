@@ -1,0 +1,367 @@
+.contact-section {
+  width: min(1380px, calc(100% - 2rem));
+  margin: clamp(1rem, 4vw, 2rem) auto;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/** CONTACT HEADING **/
+
+.contact-heading {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+
+/** IMAGE + FORM CONTAINER **/
+
+.contact-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  width: 100%;
+}
+
+/** CONTACT IMAGE **/
+
+.contact-pic {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  max-height: 500px;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 1.5rem;
+}
+
+/** FORM CARD **/
+
+.form-box {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  box-sizing: border-box;
+  background: var(--white);
+  border: 1px solid rgba(2, 136, 209, 0.16);
+  border-radius: clamp(1.25rem, 3vw, 1.8rem);
+  text-align: center;
+  /* transform: translateY(-3px); */
+    box-shadow:
+      0 16px 35px rgba(2, 136, 209, 0.12),
+      0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Don't make the card jump on mobile */
+@media (min-width: 901px) {
+  .form-box:hover {
+    box-shadow: 0 2px 4px var(--primary);
+    transform: translateY(-3px);
+  }
+}
+
+/** FORM GROUP **/
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1.15rem;
+  text-align: left;
+}
+
+/** LABEL **/
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--text);
+  font-family: var(--text-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/** INPUT + TEXTAREA **/
+
+.form-group input, .form-group textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(2, 136, 209, 0.18);
+  border-radius: 0.85rem;
+  color: var(--text);
+  font-family: var(--text-family);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  outline: none;
+  box-shadow:
+    0 3px 10px rgba(2, 136, 209, 0.05);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/** PLACEHOLDER **/
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #8ba6b5;
+  opacity: 1;
+}
+
+/** INPUT HOVER **/
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: var(--primary-dark);
+}
+
+/** INPUT FOCUS **/
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 3px rgba(41, 182, 246, 0.12),
+    0 5px 15px rgba(2, 136, 209, 0.08);
+}
+
+/** TEXTAREA **/
+
+.form-group textarea {
+  width: 100%;
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+/** SUBMIT BUTTON **/
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 2rem;
+  background: var(--primary-dark);
+  color: var(--white);
+  font-family: var(--text-family);
+  font-size: var(--md);
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(2, 136, 209, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/** BUTTON HOVER **/
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  background: var(--primary);
+}
+
+/** BUTTON ACTIVE **/
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(2, 136, 209, 0.15);
+}
+
+/** TABLET / SMALL LAPTOP - 901px - 1100px **/
+
+@media (max-width: 1100px) {
+
+  .contact-content {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+    gap: 2rem;
+  }
+
+  .contact-pic {
+    max-width: 450px;
+  }
+
+  .form-box {
+    max-width: 480px;
+  }
+}
+
+/** TABLET <= 900px **/
+
+@media (max-width: 900px) {
+
+  .contact-section {
+    width: min(94%, 700px);
+    padding: 1rem;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-pic {
+    width: min(100%, 500px);
+    max-height: 500px;
+  }
+
+  .form-box {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/** MOBILE <= 600px **/
+
+@media (max-width: 600px) {
+
+  .contact-section {
+    width: calc(100% - 1rem);
+    margin: 1rem auto;
+    border-radius: 1.25rem;
+  }
+
+  .contact-heading {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .contact-content {
+    gap: 1.5rem;
+  }
+
+  .contact-pic {
+    width: 100%;
+    max-height: none;
+    border-radius: 1rem;
+  }
+
+  .form-box {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.82rem;
+  }
+
+  .form-group input, .form-group textarea {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.9rem;
+    border-radius: 0.75rem;
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    min-height: 2.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+/** SMALL MOBILE <= 400px **/
+
+@media (max-width: 400px) {
+
+  .contact-section {
+    width: calc(100% - 0.75rem);
+    padding: 0.8rem;
+    border-radius: 1rem;
+  }
+
+  .contact-heading {
+    font-size: 1.65rem;
+  }
+
+  .form-box {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .form-group textarea {
+    min-height: 110px;
+  }
+
+  .submit-btn {
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+  }
+}
+
+/** VERY SMALL DEVICES <= 320px **/
+
+@media (max-width: 320px) {
+
+  .contact-section {
+    width: calc(100% - 0.5rem);
+  }
+
+  .contact-heading {
+    font-size: 1.45rem;
+  }
+
+  .form-box {
+    padding: 0.85rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+  }
+
+  .form-group input, .form-group textarea {
+    padding: 0.7rem;
+    font-size: 0.82rem;
+  }
+
+  .submit-btn {
+    font-size: 0.85rem;
+  }
+}
+
+/** REDUCED MOTION **/
+
+@media (prefers-reduced-motion: reduce) {
+
+  .form-box,
+  .form-group input,
+  .form-group textarea,
+  .submit-btn {
+    transition: none;
+  }
+
+  .form-box:hover,
+  .submit-btn:hover {
+    transform: none;
+  }
+}

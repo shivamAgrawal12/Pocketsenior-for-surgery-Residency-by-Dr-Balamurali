@@ -1,0 +1,483 @@
+.longcase-page {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--text-family, Arial, sans-serif);
+}
+
+/** HEADER **/
+
+.longcase-header-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(4rem, 8vw, 7rem) 1.5rem 3rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/** HEADER CONTENT **/
+
+.longcase-header-content {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--white);
+}
+
+/** LABEL **/
+
+.longcase-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/** TITLE **/
+
+.longcase-title {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: capitalize;
+  color: var(--text);
+}
+
+/** COMPLETE NAME **/
+
+/* .longcase-complete-name {
+  max-width: 900px;
+  margin: 1.25rem auto 0;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+} */
+
+/** MAIN CONTENT **/
+
+.longcase-content-section {
+  width: min(1150px, 92%);
+  margin: 0 auto;
+  /* padding: clamp(2rem, 5vw, 4rem) 0; */
+}
+
+/** MAIN IMAGE **/
+
+.longcase-main-image-wrapper {
+  width: 100%;
+  background: var(--white);
+  /* max-width: 850px; */
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 15px 40px rgba(2, 136, 209, 0.15);
+}
+
+.longcase-main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/** INTRODUCTION **/
+
+.longcase-introduction {
+  width: 100%;
+  margin: 0 auto 2.5rem;
+  padding: 1.5rem 1.75rem;
+  box-sizing: border-box;
+  border-left: 5px solid var(--primary-dark);
+  border-radius: 0 1rem 1rem 0;
+  background: var(--white);
+  box-shadow: 0 5px 20px rgba(2, 136, 209, 0.08);
+}
+
+.longcase-introduction p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #34495e;
+}
+
+/** SECTION CONTAINER **/
+
+.longcase-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#first-card {
+  margin-bottom: 1.5rem;
+}
+
+/** SECTION CARD **/
+
+.longcase-section-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(41, 182, 246, 0.2);
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(2, 136, 209, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.longcase-section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(2, 136, 209, 0.12);
+}
+
+/** SECTION HEADING **/
+
+.longcase-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(2, 136, 209, 0.12);
+}
+
+.section-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  font-size: 0.9rem;
+}
+
+
+.longcase-section-heading h2 {
+  margin: 0;
+  color: var(--primary-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.3;
+}
+
+/** LIST **/
+
+.longcase-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+.longcase-list li {
+  position: relative;
+  margin-bottom: 0.85rem;
+  padding-left: 1.5rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.longcase-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom bullet */
+
+.longcase-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+/** NAVIGATION **/
+
+.longcase-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.longcase-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--primary-dark);
+  color: var(--white);
+  font-family: var(--text-family, Arial, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(2, 136, 209, 0.2);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.longcase-back-button:hover {
+  background: var(--text);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(2, 136, 209, 0.25);
+}
+
+.longcase-back-button:active {
+  transform: translateY(0);
+}
+
+/* NOT FOUND */
+
+.longcase-not-found {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3.5rem 0 -4rem;
+  box-sizing: border-box;
+}
+
+.not-found-card {
+  width: min(500px, 100%);
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 1.5rem;
+  background: var(--white);
+  box-shadow: 0 15px 40px rgba(2, 136, 209, 0.12);
+}
+
+.not-found-image {
+  display: block;
+  width: min(180px, 60%);
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
+
+
+.not-found-card h2 {
+  margin: 0;
+  color: var(--primary-dark);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.7rem;
+}
+
+.not-found-card p {
+  margin: 0.8rem 0 1.5rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--primary-dark);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease,
+  background 0.2s ease;
+}
+
+
+.back-button:hover {
+  background: var(--text);
+  transform: translateY(-2px);
+}
+
+/** TABLET **/
+
+@media (max-width: 768px) {
+
+  .longcase-header-section {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .longcase-content-section {
+    width: 92%;
+  }
+
+  .longcase-section-card {
+    padding: 1.25rem;
+  }
+
+  .longcase-section-heading {
+    gap: 0.75rem;
+  }
+
+  .section-number {
+    width: 38px;
+    height: 38px;
+    font-size: 0.8rem;
+  }
+
+  .longcase-list li {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+}
+
+/** MOBILE **/
+
+@media (max-width: 600px) {
+
+  .longcase-header-section {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .longcase-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .longcase-content-section {
+    width: 94%;
+    padding-top: 1.5rem;
+  }
+
+  .longcase-main-image-wrapper {
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .longcase-introduction {
+    padding: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .longcase-introduction p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .longcase-section-card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .longcase-section-heading {
+    margin-bottom: 1rem;
+  }
+
+  .section-number {
+    width: 34px;
+    height: 34px;
+    margin-top: 1px;
+  }
+
+  .longcase-section-heading h2 {
+    font-size: 1rem;
+  }
+
+  .longcase-list li {
+    padding-left: 1.2rem;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 0.7rem;
+  }
+
+  .longcase-list li::before {
+    top: 0.65rem;
+    width: 6px;
+    height: 6px;
+  }
+
+  .longcase-navigation {
+    margin-top: 2rem;
+  }
+
+  .longcase-back-button {
+    width: 100%;
+  }
+
+  .not-found-card {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/** SMALL MOBILE **/
+
+@media (max-width: 400px) {
+
+  .longcase-header-section {
+    padding: 2rem 1rem 0rem;
+  }
+
+  .longcase-content-section {
+    width: 94%;
+  }
+
+  .longcase-title {
+    font-size: 1.7rem;
+  }
+
+  .longcase-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .longcase-section-card {
+    padding: 0.9rem;
+  }
+
+  .longcase-section-heading h2 {
+    font-size: 0.95rem;
+  }
+
+  .longcase-list li {
+    font-size: 0.85rem;
+  }
+}
+
+/** SINGLE VALUE CONTENT **/
+
+.case-single-text {
+  margin: 0;
+  color: #34495e;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .case-single-text {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+}
+
+/** REDUCED MOTION **/
+
+@media (prefers-reduced-motion: reduce) {
+
+  .longcase-section-card,
+  .longcase-back-button,
+  .back-button {
+    transition: none;
+  }
+}
