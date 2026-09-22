@@ -69,7 +69,7 @@ export const thyroid = "https://res.cloudinary.com/h8kvkqlu/image/upload/v178976
 
 export const jaundice = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760151/obsructive.jpg";
 
-export const stomach = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760152/stomach.jpg";
+export const stomach = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790053956/stomach.jpg";
 
 export const rectum = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760149/carcinoma-rectum.jpg";
 
