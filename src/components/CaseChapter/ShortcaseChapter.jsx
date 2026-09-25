@@ -4,23 +4,42 @@ import { useParams, useNavigate } from "react-router-dom";
 import shortcasesData from "../../data/shortcases";
 import { broken } from "../../data/cloudinary";
 
+import ChapterTools from "../ChapterTools/ChapterTools";
+import ChapterNavigation from "../ChapterTools/ChapterNavigation";
+
+import { getChapterSections } from "../../data/chapterSections";
+
 import "./CaseChapter.css";
 
+
 const ShortcaseChapter = () => {
+
   const { id } = useParams();
+
   const navigate = useNavigate();
 
-  const chapter = shortcasesData.find(
-    (item) => String(item.chapterId) === String(id)
+
+  /* =========================================================
+     FIND CURRENT CHAPTER
+  ========================================================= */
+
+  const currentIndex = shortcasesData.findIndex(
+    (item) =>
+      String(item.chapterId) === String(id)
   );
 
-  /* =========================================
+  const chapter = shortcasesData[currentIndex];
+
+
+  /* =========================================================
      CHAPTER NOT FOUND
-  ========================================= */
+  ========================================================= */
 
   if (!chapter) {
+
     return (
       <section className="longcase-not-found">
+
         <div className="not-found-card">
 
           <img
@@ -29,93 +48,71 @@ const ShortcaseChapter = () => {
             className="not-found-image"
           />
 
-          <h2>Chapter Not Found</h2>
+          <h2>
+            Chapter Not Found
+          </h2>
 
           <p>
-            The short case you are looking for could not be found.
+            The short case you are looking for
+            could not be found.
           </p>
 
           <button
             type="button"
             className="back-button"
             onClick={() => {
+
               navigate("/");
+
               window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: "instant",
               });
+
             }}
           >
             ← Back to Home
           </button>
 
         </div>
+
       </section>
     );
   }
 
-  /* =========================================
-     SHORT CASE SECTIONS
-  ========================================= */
 
-  const sections = [
-    {
-      key: "history_of_presenting_illness",
-      title: "History of Presenting Illness",
-    },
-    {
-      key: "past_history",
-      title: "Past History",
-    },
-    {
-      key: "personal_history",
-      title: "Personal History",
-    },
-    {
-      key: "abdominal_examination",
-      title: "Abdominal Examination",
-    },
-    {
-      key: "general_examination",
-      title: "General Examination",
-    },
-    {
-      key: "local_examination",
-      title: "Local Examination",
-    },
-    {
-      key: "inspection",
-      title: "Inspection",
-    },
-    {
-      key: "palpation",
-      title: "Palpation",
-    },
-    {
-      key: "percussion",
-      title: "Percussion",
-    },
-    {
-      key: "auscultation",
-      title: "Auscultation",
-    },
-    {
-      key: "dre",
-      title: "Digital Rectal Examination",
-    },
-    {
-      key: "summary",
-      title: "Summary",
-    },
-  ];
+  /* =========================================================
+     PREVIOUS / NEXT
+  ========================================================= */
+
+  const previousChapter =
+    currentIndex > 0
+      ? shortcasesData[currentIndex - 1]
+      : null;
+
+
+  const nextChapter =
+    currentIndex < shortcasesData.length - 1
+      ? shortcasesData[currentIndex + 1]
+      : null;
+
+
+  /* =========================================================
+     DYNAMIC SECTIONS
+  ========================================================= */
+
+  const sections = getChapterSections(chapter);
+
 
   return (
+
     <main className="longcase-page">
 
-      {/* =========================================
-          HEADER
-      ========================================= */}
+
+      {/* =====================================================
+          PAGE HEADER
+      ===================================================== */}
 
       <section className="longcase-header-section">
 
@@ -136,15 +133,19 @@ const ShortcaseChapter = () => {
       </section>
 
 
-      {/* =========================================
-          CONTENT
-      ========================================= */}
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
 
       <section className="longcase-content-section">
 
-        {/* Main Image */}
+
+        {/* ===================================================
+            IMAGE + TOOLS
+        =================================================== */}
 
         {chapter.image && (
+
           <div className="longcase-main-image-wrapper">
 
             <img
@@ -153,13 +154,23 @@ const ShortcaseChapter = () => {
               className="longcase-main-image"
             />
 
+
+            <ChapterTools
+              chapterId={chapter.chapterId}
+              chapterTitle={chapter.name}
+            />
+
           </div>
+
         )}
 
 
-        {/* Description */}
+        {/* ===================================================
+            DESCRIPTION
+        =================================================== */}
 
         {chapter.text && (
+
           <div className="longcase-introduction">
 
             <p>
@@ -167,65 +178,101 @@ const ShortcaseChapter = () => {
             </p>
 
           </div>
+
         )}
 
 
-        {/* Case Sections */}
+        {/* ===================================================
+            DYNAMIC SECTIONS
+        =================================================== */}
 
         <div className="longcase-sections">
 
-          {sections.map((section) => {
+          {sections.map(
+            ({ key, title, content }) => (
 
-            const content = chapter[section.key];
-
-            if (
-              !content ||
-              !Array.isArray(content) ||
-              content.length === 0
-            ) {
-              return null;
-            }
-
-            const sectionNumber = "👉";
-
-            return (
               <article
                 className="longcase-section-card"
-                key={section.key}
+                key={key}
               >
 
                 <div className="longcase-section-heading">
 
                   <span className="section-number">
-                    {String(sectionNumber).padStart(2, "0")}
+                    👉
                   </span>
 
                   <h2>
-                    {section.title}
+                    {title}
                   </h2>
 
                 </div>
 
-                <ul className="longcase-list">
 
-                  {content.map((step, index) => (
-                    <li
-                      key={`${section.key}-${index}`}
-                    >
-                      {step}
-                    </li>
-                  ))}
+                {Array.isArray(content) ? (
 
-                </ul>
+                  <ul className="longcase-list">
+
+                    {content.map(
+                      (step, index) => (
+
+                        <li
+                          key={`${key}-${index}`}
+                        >
+                          {step}
+                        </li>
+
+                      )
+                    )}
+
+                  </ul>
+
+                ) : (
+
+                  <p className="case-single-text">
+                    {content}
+                  </p>
+
+                )}
 
               </article>
-            );
-          })}
+
+            )
+          )}
 
         </div>
 
 
-        {/* Back */}
+        {/* ===================================================
+            PREVIOUS / NEXT
+        =================================================== */}
+
+        <ChapterNavigation
+          previousChapter={
+            previousChapter
+              ? {
+                  name: previousChapter.name,
+                  path:
+                    `/Shortcaseschapter/${previousChapter.chapterId}`,
+                }
+              : null
+          }
+
+          nextChapter={
+            nextChapter
+              ? {
+                  name: nextChapter.name,
+                  path:
+                    `/Shortcaseschapter/${nextChapter.chapterId}`,
+                }
+              : null
+          }
+        />
+
+
+        {/* ===================================================
+            BACK HOME
+        =================================================== */}
 
         <div className="longcase-navigation">
 
@@ -233,12 +280,15 @@ const ShortcaseChapter = () => {
             type="button"
             className="back-button"
             onClick={() => {
+
               navigate("/");
+
               window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: "instant",
               });
+
             }}
           >
             ← Back to Home
@@ -251,5 +301,6 @@ const ShortcaseChapter = () => {
     </main>
   );
 };
+
 
 export default ShortcaseChapter;

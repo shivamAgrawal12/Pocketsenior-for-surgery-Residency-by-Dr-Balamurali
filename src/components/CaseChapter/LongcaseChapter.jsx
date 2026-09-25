@@ -4,168 +4,115 @@ import { useParams, useNavigate } from "react-router-dom";
 import loncasesData from "../../data/longcases";
 import { broken } from "../../data/cloudinary";
 
+import ChapterTools from "../ChapterTools/ChapterTools";
+import ChapterNavigation from "../ChapterTools/ChapterNavigation";
+
+import { getChapterSections } from "../../data/chapterSections";
+
 import "./CaseChapter.css";
 
+
 const LongcaseChapter = () => {
+
   const { id } = useParams();
+
   const navigate = useNavigate();
 
-  const chapter = loncasesData.find(
-    (item) => String(item.chapterId) === String(id)
+
+  /* =========================================================
+     FIND CURRENT CHAPTER
+  ========================================================= */
+
+  const currentIndex = loncasesData.findIndex(
+    (item) =>
+      String(item.chapterId) === String(id)
   );
 
-  /* ---------------------------------------------
-     Chapter not found
-  --------------------------------------------- */
+  const chapter = loncasesData[currentIndex];
+
+
+  /* =========================================================
+     CHAPTER NOT FOUND
+  ========================================================= */
 
   if (!chapter) {
+
     return (
       <section className="longcase-not-found">
+
         <div className="not-found-card">
+
           <img
             src={broken}
             alt="Chapter not found"
             className="not-found-image"
           />
 
-          <h2>Chapter Not Found</h2>
+          <h2>
+            Chapter Not Found
+          </h2>
 
           <p>
-            The long case you are looking for could not be found.
+            The long case you are looking for
+            could not be found.
           </p>
 
           <button
             type="button"
             className="back-button"
             onClick={() => {
+
               navigate("/");
+
               window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: "instant",
               });
+
             }}
           >
             ← Back to Home
           </button>
+
         </div>
+
       </section>
     );
   }
 
-  /* ---------------------------------------------
-     All possible content sections
-  --------------------------------------------- */
 
-  const sections = [
-    {
-      key: "history_of_presenting_illness",
-      title: "History of Presenting Illness",
-    },
-    {
-      key: "past_history",
-      title: "Past History",
-    },
-    {
-      key: "family_history",
-      title: "Family History",
-    },
-    {
-      key: "medical_history",
-      title: "Medical History",
-    },
-    {
-      key: "menstrual_history",
-      title: "Menstrual History",
-    },
-    {
-      key: "surgical_history",
-      title: "Surgical History",
-    },
-    {
-      key: "personal_history",
-      title: "Personal History",
-    },
-    {
-      key: "menstrual_and_obstetric_history",
-      title: "Menstrual and Obstetric History",
-    },
-    {
-      key: "general_examination",
-      title: "General Examination",
-    },
-    {
-      key: "local_examination",
-      title: "Local Examination",
-    },
-    {
-      key: "proctoscopic_examination",
-      title: "Proctoscopic Examination",
-    },
-    {
-      key: "per_abdomen_examination",
-      title: "Per Abdomen Examination",
-    },
-    {
-      key: "inspection",
-      title: "Inspection",
-    },
-    {
-      key: "palpation",
-      title: "Palpation",
-    },
-    {
-      key: "percussion",
-      title: "Percussion",
-    },
-    {
-      key: "auscultation",
-      title: "Auscultation",
-    },
-    {
-      key: "dre",
-      title: "Digital Rectal Examination",
-    },
-    {
-      key: "cns",
-      title: "Central Nervous System Examination",
-    },
-    {
-      key: "per_vaginal_examination",
-      title: "Per Vaginal Examination",
-    },
-    {
-      key: "bimanual_examination",
-      title: "Bimanual Examination",
-    },
-    {
-      key: "systemic_examination",
-      title: "Systemic Examination",
-    },
-    {
-      key: "respiratory_system",
-      title: "Respiratory System",
-    },
-    {
-      key: "cardiovascular",
-      title: "Cardiovascular System",
-    },
-    {
-      key: "summary",
-      title: "Summary",
-    },
-    {
-      key: "differntial_diagnosis",
-      title: "Differential Diagnosis",
-    },
-  ];
+  /* =========================================================
+     PREVIOUS / NEXT
+  ========================================================= */
+
+  const previousChapter =
+    currentIndex > 0
+      ? loncasesData[currentIndex - 1]
+      : null;
+
+
+  const nextChapter =
+    currentIndex < loncasesData.length - 1
+      ? loncasesData[currentIndex + 1]
+      : null;
+
+
+  /* =========================================================
+     DYNAMIC SECTIONS
+  ========================================================= */
+
+  const sections = getChapterSections(chapter);
+
 
   return (
+
     <main className="longcase-page">
 
-      {/* =========================================
+
+      {/* =====================================================
           PAGE HEADER
-      ========================================= */}
+      ===================================================== */}
 
       <section className="longcase-header-section">
 
@@ -186,52 +133,69 @@ const LongcaseChapter = () => {
       </section>
 
 
-      {/* =========================================
+      {/* =====================================================
           MAIN CONTENT
-      ========================================= */}
+      ===================================================== */}
 
       <section className="longcase-content-section">
 
-        {/* Image */}
+
+        {/* ===================================================
+            IMAGE + CHAPTER TOOLS
+        =================================================== */}
 
         {chapter.image && (
+
           <div className="longcase-main-image-wrapper">
+
             <img
               src={chapter.image}
               alt={chapter.name}
               className="longcase-main-image"
             />
+
+
+            {/* Tools on top of image */}
+
+            <ChapterTools
+              chapterId={chapter.chapterId}
+              chapterTitle={chapter.name}
+            />
+
           </div>
+
         )}
 
 
-        {/* Introduction / Description */}
+        {/* ===================================================
+            DESCRIPTION
+        =================================================== */}
 
         {chapter.text && (
+
           <div className="longcase-introduction">
-            <p>{chapter.text}</p>
+
+            <p>
+              {chapter.text}
+            </p>
+
           </div>
+
         )}
 
 
-        {/* =====================================
-            CASE INFORMATION
-        ===================================== */}
+        {/* ===================================================
+            DYNAMIC CHAPTER SECTIONS
+        =================================================== */}
 
         <div className="longcase-sections">
 
-          {sections.map((section) => {
+          {sections.map(
+            ({ key, title, content }) => (
 
-            const content = chapter[section.key];
-
-            if (!content || !Array.isArray(content) || content.length === 0) {
-              return null;
-            }
-
-            return (
               <article
                 className="longcase-section-card"
-                key={section.key}
+                key={key}
               >
 
                 <div className="longcase-section-heading">
@@ -240,55 +204,82 @@ const LongcaseChapter = () => {
                     👉
                   </span>
 
-                  <h2>{section.title}</h2>
+                  <h2>
+                    {title}
+                  </h2>
 
                 </div>
 
 
-                <ul className="longcase-list">
+                {/* ARRAY CONTENT */}
 
-                  {content.map((step, index) => (
-                    <li key={`${section.key}-${index}`}>
-                      {step}
-                    </li>
-                  ))}
+                {Array.isArray(content) ? (
 
-                </ul>
+                  <ul className="longcase-list">
+
+                    {content.map(
+                      (step, index) => (
+
+                        <li
+                          key={`${key}-${index}`}
+                        >
+                          {step}
+                        </li>
+
+                      )
+                    )}
+
+                  </ul>
+
+                ) : (
+
+                  /* STRING CONTENT */
+
+                  <p className="case-single-text">
+                    {content}
+                  </p>
+
+                )}
 
               </article>
-            );
-          })}
+
+            )
+          )}
 
         </div>
 
 
-        {/* =====================================
-            BACK BUTTON
-        ===================================== */}
+        {/* ===================================================
+            PREVIOUS / NEXT
+        =================================================== */}
 
-        <div className="longcase-navigation">
+        <ChapterNavigation
+          previousChapter={
+            previousChapter
+              ? {
+                  name: previousChapter.name,
+                  path:
+                    `/Longcaseschapter/${previousChapter.chapterId}`,
+                }
+              : null
+          }
 
-          <button
-            type="button"
-            className="back-button"
-            onClick={() => {
-              navigate("/");
-              window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "instant",
-              });
-            }}
-          >
-            ← Back to Home
-          </button>
-
-        </div>
+          nextChapter={
+            nextChapter
+              ? {
+                  name: nextChapter.name,
+                  path:
+                    `/Longcaseschapter/${nextChapter.chapterId}`,
+                }
+              : null
+          }
+        />
 
       </section>
 
     </main>
   );
 };
+
 
 export default LongcaseChapter;

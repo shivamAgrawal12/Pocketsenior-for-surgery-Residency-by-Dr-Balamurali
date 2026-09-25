@@ -77,10 +77,11 @@
 .longcase-main-image-wrapper {
   width: 100%;
   background: var(--white);
-  /* max-width: 850px; */
   margin: 0 auto 2rem;
   overflow: hidden;
   border-radius: 1.5rem;
+  position: relative;
+  line-height: 0;
   box-shadow: 0 15px 40px rgba(2, 136, 209, 0.15);
 }
 
@@ -89,7 +90,7 @@
   width: 100%;
   height: auto;
   max-height: 550px;
-  object-fit: contain;
+  object-fit: cover;
   margin: 0 auto;
 }
 
@@ -133,7 +134,7 @@
   padding: 1.5rem 1.75rem;
   border: 1px solid rgba(41, 182, 246, 0.2);
   border-radius: 1.25rem;
-  background: #ffffff;
+  background: var(--white);
   box-shadow: 0 5px 20px rgba(2, 136, 209, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -165,7 +166,6 @@
   background: var(--blue-soft);
   font-size: 0.9rem;
 }
-
 
 .longcase-section-heading h2 {
   margin: 0;
@@ -208,46 +208,6 @@
   height: 7px;
   border-radius: 50%;
   background: var(--primary);
-}
-
-/** NAVIGATION **/
-
-.longcase-navigation {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.longcase-back-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 3rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 50px;
-  background: var(--primary-dark);
-  color: var(--white);
-  font-family: var(--text-family, Arial, sans-serif);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(2, 136, 209, 0.2);
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.longcase-back-button:hover {
-  background: var(--text);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(2, 136, 209, 0.25);
-}
-
-.longcase-back-button:active {
-  transform: translateY(0);
 }
 
 /* NOT FOUND */
@@ -347,7 +307,7 @@
 @media (max-width: 600px) {
 
   .longcase-header-section {
-    padding: 1.5rem 1rem 1rem;
+    padding: 1rem;
   }
 
   .longcase-title {
@@ -356,7 +316,7 @@
 
   .longcase-content-section {
     width: 94%;
-    padding-top: 1.5rem;
+    padding-top: 0;
   }
 
   .longcase-main-image-wrapper {
@@ -406,10 +366,6 @@
     height: 6px;
   }
 
-  .longcase-navigation {
-    margin-top: 2rem;
-  }
-
   .longcase-back-button {
     width: 100%;
   }
@@ -423,16 +379,12 @@
 
 @media (max-width: 400px) {
 
-  .longcase-header-section {
-    padding: 2rem 1rem 0rem;
-  }
-
   .longcase-content-section {
     width: 94%;
   }
 
   .longcase-title {
-    font-size: 1.7rem;
+    font-size: 1.25rem !important;
   }
 
   .longcase-label {
@@ -457,7 +409,7 @@
 
 .case-single-text {
   margin: 0;
-  color: #34495e;
+  color: var(--primary);
   font-size: 0.95rem;
   line-height: 1.8;
 }

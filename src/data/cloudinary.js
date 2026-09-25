@@ -35,19 +35,19 @@ export const book = "https://res.cloudinary.com/h8kvkqlu/image/upload/v179002121
 
 // Case Chapter
 
-export const Appendix = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760147/Appendix.jpg";
+export const Appendix = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790175964/apend.png";
 
 export const chesttube = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790024485/newicdi.png";
 
-export const Graham = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760148/Graham.jpg";
+export const Graham = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790175965/Graham.png";
 
-export const jabuolays = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760150/jabuolays.jpg";
+export const jabuolays = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790175965/JABOULAY.png";
 
 export const Stoma = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790047610/newstoma.png";
 
-export const Hernia = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760149/Hernia.jpg";
+export const Hernia = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790175965/Hernia.png";
 
-export const circumcision = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760149/circumcision.jpg";
+export const circumcision = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790175964/circumcision.png";
 
 export const slinewater = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790026211/water.png";
 
@@ -67,7 +67,7 @@ export const carcinoma = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789
 
 export const thyroid = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760152/thyroid.jpg";
 
-export const jaundice = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1789760151/obsructive.jpg";
+export const jaundice = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790149385/Anatomy.png";
 
 export const stomach = "https://res.cloudinary.com/h8kvkqlu/image/upload/v1790053956/stomach.jpg";
 

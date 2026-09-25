@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FaEnvelope,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { logo } from "../../data/cloudinary";
 import testimonialsData from "../../data/testimonials";
 import longcasestudyData from "../../data/longcases";
 import shortcasestudyData from "../../data/shortcases";
-
+import BookmarkMenu from "../ChapterTools/BookmarkMenu";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -284,22 +281,6 @@ const Navbar = () => {
         </nav>
         <div className="header-social">
           <a
-            href="https://www.instagram.com/dr.balamuralikrishnan/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <FaInstagram />
-          </a>
-
-          <a 
-            href="mailto:balamuralikrishna97@gmail.com"
-            aria-label="Email"
-          >
-            <FaEnvelope />
-          </a>
-
-          <a
             href="https://www.instagram.com/thetamilsurgeon.in.ranchi?stkn=cWY0ZGkzZmY4anhs"
             target="_blank"
             rel="noopener noreferrer"
@@ -307,7 +288,8 @@ const Navbar = () => {
           >
             <FaInstagram />
           </a>
-
+          
+          <BookmarkMenu/>
         </div>
       </div>
     </header>

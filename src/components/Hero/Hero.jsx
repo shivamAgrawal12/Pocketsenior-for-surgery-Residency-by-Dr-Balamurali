@@ -1,5 +1,6 @@
 import React from "react";
 import { heroBanner, doctor } from "../../data/cloudinary";
+import { FaEnvelope, FaInstagram } from "react-icons/fa";
 import "./Hero.css";
 
 const Home = () => {
@@ -39,7 +40,27 @@ const Home = () => {
         </p>
 
         <div className="hero-doctor">
-          <img src={doctor} alt="Doctor icon" className="doctor-image" />
+
+          <div className="left-hero-doctor-info">
+            <img src={doctor} alt="Doctor icon" className="doctor-image" />
+            <div className="hero-social-icon">
+              <a
+              href="https://www.instagram.com/dr.balamuralikrishnan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+
+            <a 
+              href="mailto:balamuralikrishna97@gmail.com"
+              aria-label="Email"
+            >
+              <FaEnvelope />
+            </a>
+            </div>
+          </div>
           
           <div className="hero-doctor-info">
             <h3>Dr. Balamurali Balakrishnan</h3>

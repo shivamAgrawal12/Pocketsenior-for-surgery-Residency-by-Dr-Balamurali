@@ -9,6 +9,8 @@ import Casechapter from "./components/CaseChapter/CaseChapter";
 import Longcasechapter from "./components/CaseChapter/LongcaseChapter";
 import Shortcasechapter from "./components/CaseChapter/ShortcaseChapter";
 import StickyPromo from "./components/StickyPromo/StickyPromo";
+import PageNotFound from "./components/PageNotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
         <Route path="/chapter/:id" element={<Casechapter />} />
         <Route path="/Longcasechapter/:id" element={<Longcasechapter />} />
         <Route path="/Shortcaseschapter/:id" element={<Shortcasechapter />} />
-        <Route path="*" element={<Home />} />
+        {/* <Route path="*" element={<Home />} /> */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
       <StickyPromo/>

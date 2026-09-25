@@ -1,0 +1,521 @@
+/** CHAPTER TOOLS **/
+
+.chapter-tools {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 96%;
+  margin: 0;
+  padding: 0;
+}
+
+/** GLASS TOOL BAR **/
+
+.chapter-tools-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.55rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 136, 209, 0.45) 0%,
+    rgba(41, 182, 246, 0.32) 35%,
+    rgba(129, 212, 250, 0.28) 65%,
+    rgba(255, 255, 255, 0.20) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+  0 8px 30px rgba(2, 136, 209, 0.18),
+  inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  overflow: visible;
+}
+
+/** OPTIONAL GLASS SHINE **/
+
+.chapter-tools-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0)
+    );
+  pointer-events: none;
+}
+
+/** TOOL BUTTON **/
+
+.chapter-tool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0.55rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 0 1px 3px rgba(253, 251, 251, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chapter-tool-button:hover {
+  transform: translateY(-2px);
+}
+
+.chapter-tool-button:active {
+  transform: translateY(0);
+}
+
+.chapter-tool-button.active {
+  border-color: 1rem solid var(--white);
+}
+
+.chapter-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/** STICKY NOTES **/
+
+.sticky-notes-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/** STICKY NOTE - PAPER **/
+
+.sticky-note {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 18px);
+  z-index: 1000;
+  width: 325px;
+  min-height: 300px;
+  max-width: calc(100vw - 30px);
+  padding: 2.2rem 1.2rem 1.1rem;
+  box-sizing: border-box;
+  border: 0;
+  background: var(--blue-soft);
+  border-radius: 15px;
+  color: var(--text);
+  clip-path: polygon(2% 3%, 98% 0%, 97% 96%, 4% 100%);
+  filter:
+    drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.28))
+    drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.15));
+  transform: rotate(-2deg);
+  animation: stickyNoteAppear 0.2s ease-out;
+}
+
+/** WHITE TAPE **/
+
+.sticky-note::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 100px;
+  height: 42px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: linear-gradient(
+    180deg,
+    var(--primary), var(--text) );
+  border: 1px solid var(--primary);
+  z-index: 599;
+  pointer-events: none;
+  clip-path: polygon( 0% 0%, 100% 0%, 100% 82%, 95% 88%, 85% 94%, 79% 87%, 73% 96%, 67% 88%, 60% 94%, 53% 85%, 46% 96%, 39% 88%, 32% 94%, 25% 86%, 18% 96%, 11% 87%, 5% 93%, 0% 84% );
+}
+
+/** PAPER SHINE **/
+
+.sticky-note::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keep all actual note content above pseudo elements */
+.sticky-note > * {
+  position: relative;
+  z-index: 10;
+}
+
+/** STICKY NOTE HEADER **/
+
+.sticky-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 0 0.65rem;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sticky-note-header strong {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.sticky-note-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.65;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/** IMPORTANT NOTE MESSAGE **/
+
+.sticky-imp-notes {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 0.7rem;
+  padding: 0.45rem 0.55rem;
+  box-sizing: border-box;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow: visible;
+  transform: none;
+}
+
+/** STICKY NOTE TEXTAREA **/
+
+.sticky-note textarea {
+  display: block;
+  width: 100%;
+  min-height: 155px;
+  margin: 0;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--text);
+  font-family: "Comic Sans MS", "Segoe Print", cursive;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  box-shadow: inset 0 1px 5px rgba(80, 70, 0, 0.08);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.sticky-note textarea::placeholder {
+  color: var(--primary-dark);
+  font-family: "Comic Sans MS", "Segoe Print", cursive;
+}
+
+.sticky-note textarea:focus {
+  border-color: var(--accent);
+}
+
+/** NOTE SAVED MESSAGE **/
+
+.sticky-note-saved {
+  display: block;
+  margin: 0.5rem 0 0;
+  color: green;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/** STICKY NOTE ANIMATION **/
+
+@keyframes stickyNoteAppear {
+  from {
+    opacity: 0;
+    transform:
+      rotate(-2deg)
+      scale(0.94)
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      rotate(-2deg)
+      scale(1)
+      translateY(0);
+  }
+}
+
+/** PREVIOUS / NEXT CHAPTER **/
+
+.chapter-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 25px 0;
+  box-sizing: border-box;
+}
+
+.chapter-nav-card {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 90px;
+  margin: 0;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(2, 136, 209, 0.18);
+  border-radius: 1rem;
+  outline: none;
+  background: linear-gradient(150deg, var(--white), var(--blue-soft));
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  box-shadow:
+    0 8px 20px rgba(2, 136, 209, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.chapter-nav-card.previous {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.chapter-nav-card.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.chapter-nav-label {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--primary-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.chapter-nav-card strong {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chapter-nav-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(2, 136, 209, 0.35);
+  background: linear-gradient(150deg, var(--white), var(--blue-light));
+  box-shadow: 0 14px 30px rgba(2, 136, 209, 0.16), inset 0 1px 0 var(--white);
+}
+
+.chapter-nav-card:active {
+  transform: translateY(-1px);
+}
+
+.chapter-nav-card:focus-visible {
+  outline: 3px solid rgba(41, 182, 246, 0.35);
+  outline-offset: 3px;
+}
+
+.chapter-nav-empty {
+  min-width: 0;
+}
+
+/** MOBILE STICKY NOTE PORTAL **/
+
+.sticky-note-mobile-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.sticky-note-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.sticky-note-mobile {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: min(420px, 100%);
+  max-width: 420px;
+  max-height: calc(100vh - 32px);
+  padding: 2.2rem 1rem 1rem;
+  box-sizing: border-box;
+  transform: rotate(-2deg);
+  overflow: auto;
+  z-index: 1;
+}
+
+.sticky-note-mobile::before {
+  display: block;
+}
+
+.sticky-note-mobile::after {
+  display: block;
+}
+
+.sticky-note-mobile textarea {
+  min-height: 180px;
+  max-height: 45vh;
+}
+
+/** SMALL MOBILE **/
+
+@media (max-width: 450px) {
+
+  .chapter-tool-button {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .chapter-tool-icon {
+    font-size: 0.8rem;
+  }
+
+  .sticky-note-mobile-layer {
+    padding: 15px;
+  }
+
+  .sticky-note-mobile {
+    width: calc(100vw - 24px);
+    max-width: none;
+    max-height: calc(100vh - 24px);
+    padding: 2.2rem 1.5rem 1rem;
+    transform: rotate(-2deg);
+  }
+
+  .sticky-note-mobile textarea {
+    min-height: 170px;
+    font-size: 0.85rem;
+  }
+
+  .chapter-navigation {
+    gap: 6px;
+  }
+
+  .chapter-nav-card {
+    min-height: 60px;
+    padding: 10px;
+  }
+
+  .chapter-nav-label {
+    margin-bottom: 5px;
+    font-size: 0.65rem;
+  }
+
+  .chapter-nav-card strong {
+    font-size: 0.8rem;
+  }
+}
+
+/** VERY SMALL MOBILE **/
+
+@media (max-width: 350px) {
+
+  .chapter-tool-button {
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    flex: 0 0 40px;
+  }
+
+  .chapter-tool-button > span:not(.chapter-tool-icon) {
+    display: none;
+  }
+
+  .chapter-tool-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+}

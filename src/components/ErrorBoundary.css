@@ -1,0 +1,39 @@
+.page-error-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 0.7rem;
+
+  flex-wrap: wrap;
+
+  margin-top: 1rem;
+}
+
+.page-error-actions button {
+  margin: 0;
+}
+
+.page-error-details {
+  margin-top: 1.5rem;
+
+  text-align: left;
+
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.04);
+
+  padding: 0.8rem;
+
+  color: #546e7a;
+
+  font-size: 0.75rem;
+}
+
+.page-error-details pre {
+  margin-top: 0.7rem;
+
+  overflow-x: auto;
+
+  white-space: pre-wrap;
+}
